@@ -27,13 +27,13 @@ NeoBundle 'kannokanno/previm'               " markdown previw.
 NeoBundle 'scrooloose/nerdtree'             " dict tree.
 NeoBundle 'jistr/vim-nerdtree-tabs'         " nerdtree's plugin. shared tree between tabs.
 NeoBundle 'bronson/vim-trailing-whitespace' " fixed whitespace
+NeoBundle 'tomasr/molokai'                  " colorscheme
 
 if has('lua')
     NeoBundle 'Shougo/neocomplete.vim'      " complement
     NeoBundle "Shougo/neosnippet"           " snippet
     NeoBundle 'Shougo/neosnippet-snippets'  " snippet list
 endif
-
 
 call neobundle#end()
 
@@ -91,7 +91,6 @@ nnoremap sm gt
 
 " function key
 nnoremap <F3> : noh<CR>
-nnoremap <F4> : NERDTreeTabsToggle<CR>
 
 " ##########################
 "      au
@@ -104,13 +103,27 @@ au BufRead,BufNewFile *.tx   set filetype=html
 " ##########################
 "      vim-markdown
 " ##########################
-let g:vim_markdown_folding_disabled = 1
+if neobundle#is_installed('vim-markdown')
+    let g:vim_markdown_folding_disabled = 1
+endif
 
 " ##################################
 "      NERDtree, NERDtree-tabs
 " ##################################
-autocmd vimenter * NERDTreeTabsOpen
+if neobundle#is_installed('nerdtree')
+    autocmd vimenter * NERDTreeTabsOpen
+    let NERDTreeShowHidden=1
+    nnoremap <F4> : NERDTreeTabsToggle<CR>
+endif
 
+" ##################################
+"      molokai
+" ##################################
+if neobundle#is_installed('molokai')
+    colorscheme molokai
+    set t_Co=256
+    syntax enable
+endif
 
 " ##################################
 "      neocomplete
