@@ -2,7 +2,7 @@
 
 ## Install
 
-
+1. Install vim with lua
 
 ```bash
 % sudo yum install -y gcc mercurial ncurses-devel make libgcc lua-devel perl-ExtUtils-Embed
@@ -19,8 +19,14 @@ no changes found
 % sudo make
 % sudo make install
 % rehash
+% vim --version | grep lua
++dialog_con      +lua             +rightleft       +writebackup
+```
 
+1. clone dotfiles
+
+```bash
 % git clone --recursive https://github.com/hunya11/dotfiles.git
 ```
 
-
+1. symbolic link
