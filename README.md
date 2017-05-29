@@ -23,10 +23,27 @@ no changes found
 +dialog_con      +lua             +rightleft       +writebackup
 ```
 
-1. clone dotfiles
+2. clone dotfiles
 
 ```bash
 % git clone --recursive https://github.com/hunya11/dotfiles.git
 ```
 
-1. symbolic link
+3. symbolic link
+
+```bash
+% ln -sf ~/dotfiles/.vimrc ~/.vimrc
+% ln -sf ~/dotfiles/.vim ~/.vim
+```
+
+4. start up VIM
+
+```bash
+% vim
+```
+
+run ``:NeoBundleInstall`` and say **yes**.
+
+
+
+
