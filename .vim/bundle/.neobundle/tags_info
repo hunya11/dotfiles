@@ -1,3 +1,4 @@
+Align
 molokai
 neobundle.vim
 neocomplete.vim
@@ -5,6 +6,10 @@ neosnippet
 neosnippet-snippets
 nerdtree
 previm
+unite.vim
+vim-fugitive
 vim-markdown
 vim-nerdtree-tabs
 vim-trailing-whitespace
+vimproc.vim
+vimshell.vim

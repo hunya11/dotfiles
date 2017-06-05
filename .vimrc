@@ -26,8 +26,24 @@ NeoBundle 'plasticboy/vim-markdown'         " syntax highlight for markdown.
 NeoBundle 'kannokanno/previm'               " markdown previw.
 NeoBundle 'scrooloose/nerdtree'             " dict tree.
 NeoBundle 'jistr/vim-nerdtree-tabs'         " nerdtree's plugin. shared tree between tabs.
+NeoBundle 'tpope/vim-fugitive'              " git
+NeoBundle 'vim-scripts/Align'               " auto indent
+
 NeoBundle 'bronson/vim-trailing-whitespace' " fixed whitespace
 NeoBundle 'tomasr/molokai'                  " colorscheme
+
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
 
 if has('lua')
     NeoBundle 'Shougo/neocomplete.vim'      " complement
@@ -51,7 +67,6 @@ set number
 set showmatch
 syntax on
 colorscheme default
-highlight Comment ctermfg=LightGreen
 
 " ##################################
 "      tab space
@@ -120,9 +135,19 @@ endif
 "      molokai
 " ##################################
 if neobundle#is_installed('molokai')
+    autocmd ColorScheme * highlight Comment ctermfg=LightGreen
+    autocmd ColorScheme * highlight Visual  ctermfg=219
     colorscheme molokai
     set t_Co=256
     syntax enable
+endif
+
+" ##################################
+"      vimshell
+" ##################################
+if neobundle#is_installed('vimshell.vim')
+    autocmd vimenter * VimShellPop
+    nnoremap <F5> : VimShellPop<CR>
 endif
 
 " ##################################
