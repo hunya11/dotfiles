@@ -28,7 +28,6 @@ NeoBundle 'scrooloose/nerdtree'             " dict tree.
 NeoBundle 'jistr/vim-nerdtree-tabs'         " nerdtree's plugin. shared tree between tabs.
 NeoBundle 'tpope/vim-fugitive'              " git
 NeoBundle 'vim-scripts/Align'               " auto indent
-
 NeoBundle 'bronson/vim-trailing-whitespace' " fixed whitespace
 NeoBundle 'tomasr/molokai'                  " colorscheme
 
@@ -67,6 +66,12 @@ set number
 set showmatch
 syntax on
 colorscheme default
+
+" ##################################
+"      search
+" ##################################
+set incsearch
+set hlsearch    " color
 
 " ##################################
 "      tab space
@@ -135,19 +140,25 @@ endif
 "      molokai
 " ##################################
 if neobundle#is_installed('molokai')
-    autocmd ColorScheme * highlight Comment ctermfg=LightGreen
+    syntax enable
+    set t_Co=256
+    autocmd ColorScheme * highlight Comment ctermfg=48
     autocmd ColorScheme * highlight Visual  ctermfg=219
     colorscheme molokai
-    set t_Co=256
-    syntax enable
 endif
 
 " ##################################
 "      vimshell
 " ##################################
 if neobundle#is_installed('vimshell.vim')
-    autocmd vimenter * VimShellPop
     nnoremap <F5> : VimShellPop<CR>
+endif
+
+" ##################################
+"      vim-trailing-whitespace
+" ##################################
+if neobundle#is_installed('vim-trailing-whitespace')
+    autocmd BufWritePre * :FixWhitespace
 endif
 
 " ##################################
